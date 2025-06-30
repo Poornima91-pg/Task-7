@@ -1,4 +1,4 @@
--- 1st  Step Created Database & used it to create tables in it
+-- 1st  Step Created Database & used it to create tables in it.
 
 -- 2nd Step: Identified Tables need to be created & Inserted Data into tables
 -- •	Movie Table - Stores basic movie information
