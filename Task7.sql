@@ -1,4 +1,4 @@
--- 1)	Movie Should have multiple Media ( Image or Video) -  (By joining Movie & Media Table)
+-- 1)	Movie Should have multiple Media ( Image or Video) -  (By joining Movie & Media Table).
 
 SELECT M.movie_name, ME.media_type, ME.url
 FROM Movie M
