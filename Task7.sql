@@ -1,18 +1,3 @@
--- 1st  Step Created Database & used it to create tables in it.
-
--- 2nd Step: Identified Tables need to be created & Inserted Data into tables
--- •	Movie Table - Stores basic movie information
--- •	Media Table -Stores media files (videos/images) for each movie
--- •	Genre Table - Stores unique genres (eg.Action,comedy,etc..)
--- •	Movie_Genre Table – Created as we cannot link movie and genre table directly because movie has multiple genre
--- •	User Table- Stores username who reviews the movies as its multiple created separate table
--- •	Review Table – Stores user review for movies
--- •	Artist Table- Stores Artist name 
--- •	Skill Table- stores Artist skills as artist has multiple skills stored in separate table
--- •	Artist_skill Table- Linking artist with their multiple skills
--- •	Movie_Artist_Role- Maps artist to Multiple roles in Movies
-
--- 3rd Step: Creating Joins between Tables to extract relevant output
 -- 1)	Movie Should have multiple Media ( Image or Video) -  (By joining Movie & Media Table)
 
 SELECT M.movie_name, ME.media_type, ME.url
@@ -100,27 +85,6 @@ JOIN Artist A ON MAR.artist_id =A.Artist_id;
 	ORDER BY M.movie_name, A.artist_name;
 
 
--- Overall Movie details with all contents :
-
-SELECT 
-    M.movie_name,
-    GROUP_CONCAT(DISTINCT G.genre_name) AS genres,
-    GROUP_CONCAT(DISTINCT A.artist_name) AS artists,
-    GROUP_CONCAT(DISTINCT MAR.artist_role) AS roles,
-    GROUP_CONCAT(DISTINCT S.skill_name) AS skills,
-    GROUP_CONCAT(DISTINCT U.username) AS reviewers,
-    AVG(R.rating) AS avg_rating
-FROM Movie M
-JOIN Movie_Genre MG ON M.movie_id = MG.movie_id
-JOIN Genre G ON MG.genre_id = G.genre_id
-JOIN Movie_Artist_Role MAR ON M.movie_id = MAR.movie_id
-JOIN Artist A ON MAR.artist_id = A.artist_id
-LEFT JOIN Artist_Skill ASK ON A.artist_id = ASK.artist_id
-LEFT JOIN Skill S ON ASK.skill_id = S.skill_id
-LEFT JOIN Review R ON M.movie_id = R.movie_id
-LEFT JOIN User U ON R.user_id = U.user_id
-GROUP BY M.movie_name
-ORDER BY M.movie_name;
 
 
 
