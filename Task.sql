@@ -1,4 +1,4 @@
--- Creating New Database
+-- Creating New Database.
 CREATE DATABASE IMDB;
 
 -- Using created Database
